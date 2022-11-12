@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    Add reply
+{% endblock %}
+{% block content %}
+    <form action="{% url 'reply_add' %}" method="POST">
+         {% csrf_token %}
+        <div class="form">
+        {% include 'partial/theme_form_2.html' with button_text='Create' %}
+    </div>
+    </form>
+{% endblock %}

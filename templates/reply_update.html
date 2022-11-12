@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+     Update
+{% endblock %}
+{% block content %}
+    <form action="{% url 'reply_update' reply.pk %}" method="POST">
+        <div class="form">
+            {% include 'partial/theme_form_2.html' with button_text='Change' %}
+        </div>
+    </form>
+{% endblock %}
