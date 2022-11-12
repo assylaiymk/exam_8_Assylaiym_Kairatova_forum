@@ -3,7 +3,7 @@ from django.db.models import Manager
 from app.querysets import CustomBaseQuerySet
 
 
-class ArticleManager(Manager):
+class ThemeManager(Manager):
     def get_or_none(self, pk=None):
         try:
             return self.get_queryset().get(pk=pk)

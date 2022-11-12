@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load bootstrap_icons %}
 
 {% block content %}
 <center>
@@ -7,29 +8,38 @@
 </center>
 {% include 'partial/search.html' %}
 <br>
-{% for theme in themes %}
- <table>
-        <tr>
-            <th>Description</th>
-            <th>Author</th>
-            <th>Created_at</th>
-        </tr>
-        <tr>
-            <td>{{ theme.description }}</td>
-            <td>{{ theme.author }}</td>
-            <td>{{ theme.created_at }}</td>
 
-        </tr>
-    </table>
-<p><a href="{% url 'theme_detail' theme.pk %}">More</a> </p>
+{% for theme in themes %}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Author</th>
+      <th scope="col">Created_at</th>
+        <th scope="col">Replies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="{% url 'theme_detail' theme.pk %}">{{ theme.description }}</a></td>
+      <td><a href="{% url 'theme_detail' theme.pk %}">{{ theme.author }}</a></td>
+      <td>{{ theme.created_at }}</td>
+    </tr>
+      </tbody>
+</table>
+
 {% if user.is_authenticated %}
     {% if perms.webapp.change_article %}
-        <p><a href="{% url 'theme_update' theme.pk %}">Update</a> </p>
+        <p><a href="{% url 'theme_update' theme.pk %}">{% bs_icon 'pencil-fill'%}</a> </p>
      {% endif %}
-        <p><a href="{% url 'theme_delete' theme.pk %}">Delete</a> </p>
+        <p><a href="{% url 'theme_delete' theme.pk %}">{% bs_icon 'trash'%}</a> </p>
  {% endif %}
 {% endfor %}
 <br>
+{% for reply in replies %}
+ <p><a href="{% url 'reply_detail' reply.pk %}">View reply</a></p>
+{% endfor %}
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}

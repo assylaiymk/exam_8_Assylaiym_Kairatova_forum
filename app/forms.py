@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
-from app.models import Theme
+from app.models import Theme, Reply
 
 
 class ThemeForm(forms.ModelForm):
@@ -25,3 +25,9 @@ class ThemeForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     search = forms.CharField(max_length=100, required=False, label='Find')
+
+
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ('author', 'theme', 'text')

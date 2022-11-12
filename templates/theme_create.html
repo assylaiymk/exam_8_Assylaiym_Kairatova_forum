@@ -4,6 +4,7 @@
 {% endblock %}
 {% block content %}
     <form action="{% url 'theme_add' %}" method="POST">
+         {% csrf_token %}
         <div class="form">
         {% include 'partial/theme_form_2.html' with button_text='Create' %}
     </div>
