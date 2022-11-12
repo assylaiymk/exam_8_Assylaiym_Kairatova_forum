@@ -4,14 +4,14 @@ body{
     color: #222;
     margin-top: 60px
 }
-.table, th, td{
+table, th, td{
     border: 1px solid;
 }
-.table{
+table{
     width: 100%;
     border-collapse: collapse;
 }
-.th, td{
+th, td{
     width: 20%;
 }
 .navbar {
