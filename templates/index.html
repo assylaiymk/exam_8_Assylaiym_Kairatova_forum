@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<center>
+<h1>Themes</h1>
+</center>
+{% include 'partial/search.html' %}
+<br>
+{% for theme in themes %}
+ <table>
+        <tr>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Created_at</th>
+        </tr>
+        <tr>
+            <td>{{ theme.description }}</td>
+            <td>{{ theme.author }}</td>
+            <td>{{ theme.created_at }}</td>
+
+        </tr>
+    </table>
+<p><a href="{% url 'theme_detail' theme.pk %}">More</a> </p>
+{% if user.is_authenticated %}
+    {% if perms.webapp.change_article %}
+        <p><a href="{% url 'theme_update' theme.pk %}">Update</a> </p>
+     {% endif %}
+        <p><a href="{% url 'theme_delete' theme.pk %}">Delete</a> </p>
+ {% endif %}
+{% endfor %}
+<br>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
