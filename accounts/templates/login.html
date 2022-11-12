@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load django_bootstrap5 %}
 
 {% block content %}
     <form action="{% url 'login' %}" method="POST">
         <div class="form">
             {% csrf_token %}
 
-            {{ form.as_p }}
+            {% bootstrap_form form %}
 
         <input type="submit" value="Login">
         </div>

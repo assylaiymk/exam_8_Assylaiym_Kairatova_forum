@@ -43,7 +43,7 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ('first_name', 'last_name', 'email')
-        labels = {'first_name': 'Name', 'Las_name': 'Surname', 'email': 'Email', }
+        labels = {'first_name': 'Name', 'Last_name': 'Surname', 'email': 'Email', }
 
 
 class ProfileChangeForm(forms.ModelForm):
